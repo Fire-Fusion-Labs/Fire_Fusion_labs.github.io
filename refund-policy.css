@@ -1,0 +1,481 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #080010;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.top-banner {
+    background-color: #a439bc;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.top-banner:hover {
+    cursor: default;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.search-icon {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 600px;
+}
+
+.cart-icon {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 600px;
+}
+
+.logo img {
+    height: 100px;
+    border: 1px solid #a439bc;
+    border-radius: 20px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #080010;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-links a i {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.nav-links a:hover {
+    color: #ff8025;
+    cursor: default; /* Cursor defaults on hover for links */
+}
+
+#raindrops {
+    position: fixed; /* Ensure it covers the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* So it doesn't interfere with interactions */
+    overflow: hidden; /* Prevent scrollbars from appearing */
+    z-index: -1; /* Ensure it’s below other content */
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.custom-cursor {
+    display: none; /* Initially hide the cursor */
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ff8000 40%, transparent 50%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background 0.3s ease;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative; /* Ensure it is relative for proper layering */
+    z-index: 1; /* Ensure it is below the rain effect */
+}
+
+.product-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between items */
+    margin-bottom: 40px;
+}
+
+
+.product {
+    background: rgba(114, 108, 108, 0.193);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 300px; /* Fixed width for each product card */
+    text-align: center;
+    flex: 1 1 auto; /* Allow the items to grow and shrink */
+    min-width: 300px; /* Ensure the cards don't shrink below 300px */
+    margin: 10px; /* Space around each card */
+}
+
+.product-item {
+    padding: 15px;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info {
+    margin-top: 10px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin: 5px 0;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.product-price {
+    font-size: 18px;
+    color: #ff8000;
+    font-weight: 700;
+    margin-bottom: 5px;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.product-rating {
+    font-size: 14px;
+    color: #FFD700;
+    margin-bottom: 10px;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.star {
+    font-size: 25px;
+    margin: 0 1px;
+}
+
+.product-add-to-cart-btn {
+    background: #FF5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.product-add-to-cart-btn:hover {
+    background: #923214;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a, .pagination span {
+    color: #fff;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination a:hover {
+    background: #ff8000;
+}
+
+.pagination .active {
+    background: #ff8000;
+    border-color: #ff8000;
+    color: #fff;
+}
+
+.pagination .disabled {
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* FAQ Section */
+.faq-section {
+    width: 40%;
+    min-height: 250px; /* Changed to min-height to allow expansion */
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(114, 108, 108, 0.193);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden; /* Hide any overflow to avoid scrolling */
+}
+
+.faq-section h2 {
+    font-size: 50px; /* Font size of FAQ */
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    width: 100%; /* Ensure full width within the section */
+    max-width: 100%; /* Prevent overflow */
+    margin: 10px 0; /* Margin for spacing */
+    padding: 15px; /* Adjusted padding */
+    background-color: #8218b498;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between; /* Space between text and icon */
+    align-items: center; /* Center content vertically */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-weight: bold;
+}
+
+.faq-question:hover {
+    background-color: #8318b4;
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #8318b445;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 100; /* Ensure it’s below other content */
+}
+
+.footer-content {
+    display: flex;
+    gap: 30px; /* Space between columns */
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #ff8025;
+}
+
+.footer-column form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.footer-column input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.footer-column button[type="submit"] {
+    padding: 10px;
+    background-color: #8218b498;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.footer-column button[type="submit"]:hover {
+    background-color: #ff8025;
+}
+
+/* Container for email list section */
+.email-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0px 0; /* Space above and below the email list section */
+}
+
+.email-list-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email-list-container input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 300px; /* Adjust width as needed */
+    margin-bottom: 10px;
+}
+
+.email-list-container button[type="submit"] {
+    padding: 10px;
+    background-color: #8218b498;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.email-list-container button[type="submit"]:hover {
+    background-color: #8318b4;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px; /* Space above the footer-bottom */
+}
+
+.email-text {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Optional, if you want to center horizontally as well */
+    height: 100%; /* Adjust as needed */
+}
+
+.email-text h5 {
+    font-size: 22.5px;
+    color: #fff;
+    margin: 0; /* Remove default margin */
+}
+
+.policy-text {
+    color: #fff;
+    text-align: center;
+}
+
+.policy__title h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.payments {
+    margin-top: 20px;
+}
+
+.list-payment {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 50px; /* Adjust height as needed */
+    width: 470px;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background: rgba(114, 108, 108, 0.193);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.list-payment__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list-payment__item svg {
+    width: 40px;
+    height: 40px;
+}
